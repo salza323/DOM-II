@@ -24,7 +24,7 @@ console.log(intro)
 const busPic = intro.querySelector('img')
 console.log(busPic)
 
-//_____________________________________________________________------
+//_____________________________________________________________
 
 //(1)mouseover on nav bar. Change color to orange and revert
 
@@ -35,4 +35,22 @@ nav.addEventListener('mouseover', function (event){
     }, 500)
 }, false)
 
-//(2)
+//(2) wheel on bus picture to zoom 
+busPic.addEventListener('wheel', function(event){
+    event.preventDefault()
+    scale += event.deltaY * -0.01
+    scale = Math.min(Math.max(.125, scale), 4)
+    busPic.style.transform = `scale(${scale})`
+})
+
+let scale = 1
+
+//(3) keydown anywhere. Will alert to stop.
+document.addEventListener('keydown', function(event){
+    if (event.isComposing){
+        return
+    }
+    alert ('Stop pressing keys!')
+})
+
+//(4)
