@@ -24,10 +24,13 @@ console.log(intro)
 const busPic = intro.querySelector('img')
 console.log(busPic)
 
+//bottom buttons
+const bottButt = topContainer.querySelectorAll('.btn')
+console.log(bottButt)
+
 //_____________________________________________________________
 
 //(1)mouseover on nav bar. Change color to orange and revert
-
 nav.addEventListener('mouseover', function (event){
     event.target.style.color = 'orange'
     setTimeout(function(){
@@ -53,4 +56,48 @@ document.addEventListener('keydown', function(event){
     alert ('Stop pressing keys!')
 })
 
-//(4)
+//(4) click on nav links to alert
+nav.addEventListener('click', function (event){
+    alert ('Sorry, link is unavailable at this time.')
+})
+
+//(5) dblclick ****STOP PROPAGATION 1****
+topContainer.addEventListener('dblclick', function(event){
+    alert ('it worked')
+    event.stopPropagation()
+})
+
+// (6) load,  change background color to teal when page is loaded 
+window.addEventListener('load', function (event){
+    console.log('Page is fully loaded.')
+})
+
+
+// //(7) resize
+window.addEventListener('resize', function(event){
+    links.forEach (function(item){
+        item.style.fontSize = '20px'
+    })
+})
+
+window.onresize = event
+
+//(8) on copy
+topContainer.addEventListener('copy', function (event){
+    event.target.style.color = 'orange'
+})
+
+
+//(9) mousedown to change text color to red
+topContainer.addEventListener('mousedown', function (event){
+    event.target.style.color = 'red'
+})
+
+//(10) keyup
+document.addEventListener('drag', function (event){
+    alert ('Leave that where you found it!')
+})
+
+//links prevent default
+// links.preventDefault()
+
